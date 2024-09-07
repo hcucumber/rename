@@ -54,18 +54,18 @@ def rename_files(path):
             episode_number = str(index + 1).zfill(episode_number_lenth)
             # 根据当前文件的序号生成集数，集数的数字位数由用户输入决定，使用 zfill 方法填充数字位数。
             new_name = series_name + ".E" + episode_number
-            if custom_content:
-                new_name += "." + custom_content
             if remaining_name:
                 new_name += "." + remaining_name
+            if custom_content:
+                new_name += "." + custom_content
             # 根据用户输入的信息和处理后的文件名生成新的文件名 new_name。
             if season_number:
                 season_number_str = str(season_number).zfill(2)
                 new_name = series_name + ".S" + season_number_str + "E" + episode_number
-                if custom_content:
-                    new_name += "." + custom_content
                 if remaining_name:
                     new_name += "." + remaining_name
+                if custom_content:
+                    new_name += "." + custom_content
             # 如果用户输入了季数，生成包含季数的新文件名。
             os.rename(os.path.join(path, file), os.path.join(path, new_name))
             # 使用 os.rename 方法将旧文件名重命名为新文件名。
