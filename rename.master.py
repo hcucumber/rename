@@ -38,18 +38,28 @@ def rename_files(path):
     custom_content = input("请输入可选的自定义内容（如果不想添加可留空）：")
     # 获取用户输入的自定义内容，存储在 custom_content 变量中。
     # 获取要删除的字符数量
-    num_chars_to_delete = int(input("请输入要删除的文件名前的字符数量（默认：0）：") or 0)
+    num_chars_to_delete_input = input("请输入要删除的文件名前的字符数量（默认：0）：") 
+    if num_chars_to_delete_input == '':
+        print ("用户未输入删除文件名字符数量，将删除所有原文件名字符！")
+        num_chars_to_delete = len(file) 
+    else:
+        print ("将删除的文件名字符数量为：" + str(num_chars_to_delete))
+        num_chars_to_delete == int(num_chars_to_delete_input)    
+    #num_chars_to_delete = len(file) if num_chars_to_delete == '' else int(num_chars_to_delete_input)
     # 获取用户输入的要删除的文件名前的字符数量，将输入转换为整数存储在 num_chars_to_delete 变量中。
+    
     # 确认用户是否想要继续重命名
-    confirmation = input(("确认要按照上述信息重命名文件吗？（默认：n）（y/n）") or n)
+    confirmation = input(("确认要按照上述信息重命名文件吗？（默认：n）（y/n）") or 'n')
     # 获取用户输入的确认信息，存储在 confirmation 变量中。
     if confirmation.lower() == 'y':
         # 如果用户确认进行重命名。
         for index, file in enumerate(sorted_files):
-            if num_chars_to_delete > 0:
+            if num_chars_to_delete == 0:
+                remaining_name = file
+            elif num_chars_to_delete > 0:
                 remaining_name = file[num_chars_to_delete:]
             else:
-                remaining_name = file
+                remaining_name = ''
             # 根据用户输入的要删除的字符数量决定是否删除文件名的前若干字符，得到剩余的文件名存储在 remaining_name 变量中。
             episode_number = str(index + 1).zfill(episode_number_lenth)
             # 根据当前文件的序号生成集数，集数的数字位数由用户输入决定，使用 zfill 方法填充数字位数。
