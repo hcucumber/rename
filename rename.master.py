@@ -40,10 +40,10 @@ def rename_files(path):
             base_name, ext = os.path.splitext(file)  # 分离文件名和扩展名
             
             if num_chars_to_delete_input == '':
-                print("用户未输入删除文件名字符数量，将删除所有原文件名字符！")
+#                print("用户未输入删除文件名字符数量，将删除所有原文件名字符！")
                 num_chars_to_delete = len(base_name)
             else:
-                print("将删除的文件名字符数量为：" + str(num_chars_to_delete_input))
+#                print("将删除的文件名字符数量为：" + str(num_chars_to_delete_input))
                 num_chars_to_delete = int(num_chars_to_delete_input)
 
             if num_chars_to_delete == 0:
